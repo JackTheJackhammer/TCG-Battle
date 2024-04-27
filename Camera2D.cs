@@ -40,7 +40,7 @@ public partial class Camera2D : Godot.Camera2D
             {
                 //Activates when mouse wheel goes up
                 case MouseButton.WheelUp:
-                    Zoom += Zoom / 2;
+                    Zoom = Zoom * 2;
                     GD.Print(Zoom);
                     break;
 
@@ -48,7 +48,7 @@ public partial class Camera2D : Godot.Camera2D
                 case MouseButton.WheelDown:
 
 
-                    Zoom -= Zoom / 2;
+                    Zoom = Zoom / 2;
                     GD.Print(Zoom);
                     break;
             }
