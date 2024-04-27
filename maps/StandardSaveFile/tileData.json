@@ -1,0 +1,22 @@
+[
+ {
+  "TileName": "Hill",
+  "SpritePath": "\/icons\/hill.png",
+  "MapIndex": 0
+ },
+ {
+  "TileName": "ForestLight",
+  "SpritePath": "\/icons\/forestlight.png",
+  "MapIndex": 1
+ },
+ {
+  "TileName": "ForestHeavy",
+  "SpritePath": "\/icons\/forestheavy.png",
+  "MapIndex": 2
+ },
+ {
+  "TileName": "Plain",
+  "SpritePath": "\/icons\/square.png",
+  "MapIndex": 3
+ }
+]

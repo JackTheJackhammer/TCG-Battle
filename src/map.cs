@@ -36,7 +36,7 @@ public partial class map : Node
     public override void _Ready()
     {
 
-        InitMap("C:/Users/16467/Desktop/StandardSaveFile");
+        InitMap("res://maps/StandardSaveFile");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
