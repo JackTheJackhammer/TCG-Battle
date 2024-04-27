@@ -12,7 +12,7 @@ public partial class Camera2D : Godot.Camera2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        float movementStep = 1f;
+        float movementStep = 5f;
         if (Input.IsKeyPressed(Key.W))
         {
             this.Position += new Godot.Vector2(0f, -movementStep);
@@ -31,20 +31,20 @@ public partial class Camera2D : Godot.Camera2D
         }
     }
 
-	//get leo to do this
+    //get leo to do this
     public override void _Input(InputEvent @event)
     {
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
         {
-            float zoomAmt = 0.5f;
             switch (mouseEvent.ButtonIndex)
             {
-
+                //Activates when mouse wheel goes up
                 case MouseButton.WheelUp:
                     Zoom += Zoom / 2;
                     GD.Print(Zoom);
                     break;
 
+                //Activates when mouse wheel goes down
                 case MouseButton.WheelDown:
 
 

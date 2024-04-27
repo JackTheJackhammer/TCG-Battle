@@ -36,8 +36,6 @@ public partial class map : Node
     public override void _Ready()
     {
 
-
-
         InitMap("C:/Users/16467/Desktop/StandardSaveFile");
     }
 
@@ -51,7 +49,7 @@ public partial class map : Node
     {
         int expectedRowSize; //To be implimented, take from metadata file.
         //load save file into a list of arrays. Each array represents a row in the map.
-        var file = FileAccess.Open("res://testingMap.txt", FileAccess.ModeFlags.Read);
+        var file = FileAccess.Open($"{SaveFileDirectory}/map.txt", FileAccess.ModeFlags.Read);
         List<Int16[]> dataset = new List<Int16[]> { };
         while (file.GetPosition() < file.GetLength())
         {
@@ -91,11 +89,6 @@ public partial class map : Node
             tileInformation.TileName = tile["TileName"].ToString();
             tileInformation.SpritePath = SaveFileDirectory + tile["SpritePath"].ToString();
             tileInformation.MapIndex = int.Parse(tile["MapIndex"].ToString());
-            GD.Print("TileName: " + tile["TileName"]);
-
-            GD.Print("SpritePath: " + tile["SpritePath"]);
-            GD.Print("MapIndex: " + tile["MapIndex"]);
-            GD.Print();
             tileTypes.Add(tileInformation);
         }
 
