@@ -1,0 +1,11 @@
+{
+  "Name": "Takehiro",
+  "Health Point": 24,
+  "Armour Point": 2,
+  "Power Point": 6,
+  "Piercing": 47,
+  "Stamina Point": 697,
+  "Speed": 2,
+  "Weapon File": "Weapon JSON template.json"
+  "Armor File": "
+}

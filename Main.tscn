@@ -1,12 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7fkrxhqchest"]
+[gd_scene load_steps=4 format=3 uid="uid://c7fkrxhqchest"]
 
-[ext_resource type="Script" path="res://src/map.cs" id="1_fi5hp"]
-[ext_resource type="Script" path="res://Camera2D.cs" id="2_bkbla"]
+[ext_resource type="Script" path="res://src/Camera2D.cs" id="2_bkbla"]
+[ext_resource type="Script" path="res://UIController.cs" id="3_enbmo"]
+[ext_resource type="Script" path="res://src/UnitController.cs" id="4_afxko"]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_fi5hp")
+[node name="Root" type="Node2D"]
+scale = Vector2(0.991941, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(133.445, 5.35817)
+scale = Vector2(84.1122, 6.93761)
 zoom = Vector2(0.965, 0.965)
 script = ExtResource("2_bkbla")
+
+[node name="UIControl" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UIControl"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_enbmo")
+
+[node name="Button" type="Button" parent="UIControl/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 820.0
+offset_top = 451.0
+offset_right = 828.0
+offset_bottom = 459.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(36.4675, 18.3526)
+
+[node name="UnitController" type="Node" parent="."]
+script = ExtResource("4_afxko")
+
+[connection signal="pressed" from="UIControl/Control/Button" to="UnitController" method="_turn_button_pressed"]

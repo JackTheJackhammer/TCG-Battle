@@ -29,13 +29,25 @@ public class TileType
 
 }
 
+public class TileRecord
+{
+    public TileType tileType
+    {
+        get;
+        set;
+    }
+
+    public int ID;
+    public int x;
+    public int y;
+
+}
 public partial class map : Node
 {
-
+    public List<TileRecord> Tiles = new List<TileRecord> { };
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-
         InitMap("res://maps/StandardSaveFile");
     }
 
@@ -97,7 +109,7 @@ public partial class map : Node
 
         var baseTile = GD.Load<PackedScene>("res://Tile.tscn"); // Will load when the script is instanced
 
-
+        int ID = 0;
         for (int row = 0; row < dataset.Count; row++)
         {
 
@@ -106,7 +118,13 @@ public partial class map : Node
                 var inst = baseTile.Instantiate<Node2D>();
                 string currentPath = "";
                 bool foundFlag = false; //flags true if the tile's value in the map file is found in the json file. If false, the tile is not defined in the JSON
-                GD.Print(tileTypes.Count); //ISSUE!
+                //set Master List of all tiles.
+                TileRecord tileRecord = new TileRecord();
+                tileRecord.x = tile;
+                tileRecord.y = row;
+                tileRecord.ID = ID;
+                Tiles.Add(tileRecord);
+
                 foreach (TileType tileType in tileTypes)
                 {
                     //See which tile this is 
@@ -115,7 +133,7 @@ public partial class map : Node
                     {
                         foundFlag = true;
                         currentPath = tileType.SpritePath;
-
+                        tileRecord.tileType = tileType;
                     }
 
 
@@ -128,10 +146,20 @@ public partial class map : Node
                 }
 
                 inst.GetChild<Sprite2D>(0).Texture = ImageTexture.CreateFromImage(Image.LoadFromFile(currentPath));
+
+                //set Metadata.
+                inst.SetMeta("X", tile);
+                inst.SetMeta("Y", row);
+                inst.SetMeta("ID", ID);
+                ID++;
+
+
                 inst.Position = new Vector2(tile * 80, row * 80);
                 AddChild(inst);
             }
         }
+
+        GD.Print($"Successfully initialized {Tiles.Count} tiles.");
 
     }
 

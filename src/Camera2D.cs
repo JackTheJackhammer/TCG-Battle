@@ -45,8 +45,6 @@ public partial class Camera2D : Godot.Camera2D
 
                 //Activates when mouse wheel goes down
                 case MouseButton.WheelDown:
-
-
                     Zoom = Zoom / 2;
                     break;
             }

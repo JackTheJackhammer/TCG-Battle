@@ -1,0 +1,8 @@
+{
+  "Name": "Gun",
+  "Is Ranged?": false,
+  "Sharpness": 0.5,
+  "Bluntness": 0.5,
+  "Supply Limit": 235,
+  "Weight": 23
+}
